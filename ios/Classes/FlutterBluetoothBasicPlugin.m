@@ -33,13 +33,68 @@
   if ([@"state" isEqualToString:call.method]) {
     result(nil);
   } else if([@"isAvailable" isEqualToString:call.method]) {
-    
-    result(@(YES));
+      if (Manager.bleConnecter == nil) {
+          [Manager didUpdateState:^(NSInteger state) {
+              switch (state) {
+                  case CBCentralManagerStateUnsupported:
+                      NSLog(@"The platform/hardware doesn't support Bluetooth Low Energy.");
+                      result(@(NO));
+                      break;
+                  case CBCentralManagerStateUnauthorized:
+                      NSLog(@"The app is not authorized to use Bluetooth Low Energy.");
+                      result(@(NO));
+                      break;
+                  case CBCentralManagerStatePoweredOff:
+                      NSLog(@"Bluetooth is currently powered off.");
+                      result(@(NO));
+                      break;
+                  case CBCentralManagerStatePoweredOn:
+                      result(@(YES));
+                      break;
+                  case CBCentralManagerStateUnknown:
+                      result(@(NO));
+                      break;
+                  default:
+                    result(@(NO));
+                      break;
+              }
+          }];
+      } else {
+          result(@(YES));
+      }
   } else if([@"isConnected" isEqualToString:call.method]) {
     
     result(@(NO));
   } else if([@"isOn" isEqualToString:call.method]) {
-    result(@(YES));
+    if (Manager.bleConnecter == nil) {
+          [Manager didUpdateState:^(NSInteger state) {
+              switch (state) {
+                  case CBCentralManagerStateUnsupported:
+                      NSLog(@"The platform/hardware doesn't support Bluetooth Low Energy.");
+                      result(@(NO));
+                      break;
+                  case CBCentralManagerStateUnauthorized:
+                      NSLog(@"The app is not authorized to use Bluetooth Low Energy.");
+                      result(@(NO));
+                      break;
+                  case CBCentralManagerStatePoweredOff:
+                      NSLog(@"Bluetooth is currently powered off.");
+                      result(@(NO));
+                      break;
+                  case CBCentralManagerStatePoweredOn:
+                      result(@(YES));
+                      break;
+                  case CBCentralManagerStateUnknown:
+                      result(@(NO));
+                      break;
+                  default:
+                    result(@(NO));
+                      break;
+              }
+          }];
+      } else {
+        result(@(YES));
+      }
   }else if([@"startScan" isEqualToString:call.method]) {
       NSLog(@"getDevices method -> %@", call.method);
       [self.scannedPeripherals removeAllObjects];
@@ -66,7 +121,7 @@
               }
           }];
       } else {
-          [self startScan];
+        [self startScan];
       }
       
     result(nil);
