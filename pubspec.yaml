@@ -1,6 +1,6 @@
 name: tig_bluetooth_basic
 description: Flutter plugin that allows to find bluetooth devices & send raw bytes data.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/liunina/tig_bluetooth_basic
 
 environment:

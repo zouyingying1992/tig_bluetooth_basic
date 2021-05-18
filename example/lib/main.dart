@@ -42,10 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initBluetooth() async {
-    bool isAvailable = await bluetoothManager.isAvailable;
-    print('cur ble device isAvailable: $isAvailable');
-    bool isOn = await bluetoothManager.isOn;
-    print('cur ble device isOn: $isOn');
+    // bool isAvailable = await bluetoothManager.isAvailable;
+    // print('cur ble device isAvailable: $isAvailable');
+    // bool isOn = await bluetoothManager.isOn;
+    // print('cur ble device isOn: $isOn');
 
     bluetoothManager.startScan(timeout: Duration(seconds: 4));
 
