@@ -4,25 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
 import 'bluetooth_device.dart';
 
-// 蓝牙设备状态
-enum BluetoothState {
-  Unsupported, // 设备不支持蓝牙
-  Unauthorized, // 蓝牙权限未授权
-  PoweredOff, // 蓝牙功能关闭
-  PoweredOn, // 蓝牙功能开启
-  Unknown, // 未知
-}
-
-// 设备连接状态
-enum ConnectState {
-  NOT_FOUND_DEVICE, //未找到蓝牙设备
-  CONNECT_STATE_DISCONNECT, // 设备断开
-  CONNECT_STATE_CONNECTING, // 设备连接中
-  CONNECT_STATE_CONNECTED, // 设备已连接
-  CONNECT_STATE_TIMEOUT, // 连接超时
-  CONNECT_STATE_FAILT // 连接错误
-}
-
 /// A BluetoothManager.
 class BluetoothManager {
   static const String NAMESPACE = 'flutter_bluetooth_basic';
