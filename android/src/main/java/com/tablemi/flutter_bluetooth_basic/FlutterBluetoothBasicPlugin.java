@@ -14,9 +14,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.EventChannel.EventSink;
 import io.flutter.plugin.common.EventChannel.StreamHandler;
@@ -28,12 +31,16 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.plugin.common.PluginRegistry.RequestPermissionsResultListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-/** FlutterBluetoothBasicPlugin */
+/**
+ * FlutterBluetoothBasicPlugin
+ */
 public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPermissionsResultListener {
   private static final String TAG = "BluetoothBasicPlugin";
   private int id = 0;
@@ -55,7 +62,7 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
     registrar.addRequestPermissionsResultListener(instance);
   }
 
-  FlutterBluetoothBasicPlugin(Registrar r){
+  FlutterBluetoothBasicPlugin(Registrar r) {
     this.registrar = r;
     this.activity = r.activity();
     this.channel = new MethodChannel(registrar.messenger(), NAMESPACE + "/methods");
@@ -75,7 +82,7 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
 
     final Map<String, Object> args = call.arguments();
 
-    switch (call.method){
+    switch (call.method) {
       case "state":
         state(result);
         break;
@@ -89,11 +96,21 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
         result.success(threadPool != null);
         break;
       case "startScan": {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+        List<String> requestList = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+          requestList.add(Manifest.permission.BLUETOOTH_SCAN);
+          requestList.add(Manifest.permission.BLUETOOTH_ADVERTISE);
+          requestList.add(Manifest.permission.BLUETOOTH_CONNECT);
+        } else {
+          if (ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION)
+                  != PackageManager.PERMISSION_GRANTED) {
+            requestList.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+          }
+        }
+
+        if (requestList.size() > 0) {
           ActivityCompat.requestPermissions(
-                  activity,
-                  new String[] {Manifest.permission.ACCESS_COARSE_LOCATION},
+                  activity,requestList.toArray(new String[requestList.size()]),
                   REQUEST_COARSE_LOCATION_PERMISSIONS);
           pendingCall = call;
           pendingResult = result;
@@ -125,7 +142,7 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
 
   }
 
-  private void getDevices(Result result){
+  private void getDevices(Result result) {
     List<Map<String, Object>> devices = new ArrayList<>();
     for (BluetoothDevice device : mBluetoothAdapter.getBondedDevices()) {
       Map<String, Object> ret = new HashMap<>();
@@ -138,9 +155,9 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
     result.success(devices);
   }
 
-  private void state(Result result){
+  private void state(Result result) {
     try {
-      switch(mBluetoothAdapter.getState()) {
+      switch (mBluetoothAdapter.getState()) {
         case BluetoothAdapter.STATE_OFF:
           result.success(BluetoothAdapter.STATE_OFF);
           break;
@@ -164,7 +181,7 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
   }
 
   private void startScan(MethodCall call, Result result) {
-    Log.d(TAG,"start scan ");
+    Log.d(TAG, "start scan ");
 
     try {
       startScan();
@@ -193,7 +210,7 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
     @Override
     public void onScanResult(int callbackType, ScanResult result) {
       BluetoothDevice device = result.getDevice();
-      if(device != null && device.getName() != null){
+      if (device != null && device.getName() != null) {
         invokeMethodUIThread("ScanResult", device);
       }
     }
@@ -201,16 +218,15 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
 
   private void startScan() throws IllegalStateException {
     BluetoothLeScanner scanner = mBluetoothAdapter.getBluetoothLeScanner();
-    if(scanner == null) throw new IllegalStateException("getBluetoothLeScanner() is null. Is the Adapter on?");
+    if (scanner == null) throw new IllegalStateException("getBluetoothLeScanner() is null. Is the Adapter on?");
 
     // 0:lowPower 1:balanced 2:lowLatency -1:opportunistic
     ScanSettings settings = new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build();
     scanner.startScan(null, settings, mScanCallback);
   }
-
   private void stopScan() {
     BluetoothLeScanner scanner = mBluetoothAdapter.getBluetoothLeScanner();
-    if(scanner != null) scanner.stopScan(mScanCallback);
+    if (scanner != null) scanner.stopScan(mScanCallback);
   }
 
   private void connect(Result result, Map<String, Object> args) {
@@ -244,12 +260,12 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
   /**
    * Reconnect to recycle the last connected object to avoid memory leaks
    */
-  private boolean disconnect(){
+  private boolean disconnect() {
 
-    if(DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id]!=null&&DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].mPort!=null) {
+    if (DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id] != null && DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].mPort != null) {
       DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].reader.cancel();
       DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].mPort.closePort();
-      DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].mPort=null;
+      DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].mPort = null;
     }
     return true;
   }
@@ -266,16 +282,16 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
   @SuppressWarnings("unchecked")
   private void writeData(Result result, Map<String, Object> args) {
     if (args.containsKey("bytes")) {
-      final ArrayList<Integer> bytes = (ArrayList<Integer>)args.get("bytes");
+      final ArrayList<Integer> bytes = (ArrayList<Integer>) args.get("bytes");
 
       threadPool = ThreadPool.getInstantiation();
       threadPool.addSerialTask(new Runnable() {
         @Override
         public void run() {
           Vector<Byte> vectorData = new Vector<>();
-          for(int i = 0; i < bytes.size(); ++i) {
+          for (int i = 0; i < bytes.size(); ++i) {
             Integer val = bytes.get(i);
-            vectorData.add(Byte.valueOf( Integer.toString(val > 127 ? val-256 : val ) ));
+            vectorData.add(Byte.valueOf(Integer.toString(val > 127 ? val - 256 : val)));
           }
 
           DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].sendDataImmediately(vectorData);
@@ -339,7 +355,6 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
       activity.unregisterReceiver(mReceiver);
     }
   };
-
 
 
 }
