@@ -1,45 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="tig_bluetooth_basic.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/tig_bluetooth_basic.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="ChangeListManager">
+    <list default="true" id="f42f5d36-44d5-445f-955f-92602b93b9ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/tablemi/flutter_bluetooth_basic/FlutterBluetoothBasicPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/tablemi/flutter_bluetooth_basic/FlutterBluetoothBasicPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tig_bluetooth_basic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tig_bluetooth_basic.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ToolWindowManager">
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-    </layout>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <option name="show-excluded-files" value="false" />
-      </pane>
-    </panes>
+  <component name="ProjectId" id="26UceUBkLl2MvYn2xpALVsbxRvm" />
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f42f5d36-44d5-445f-955f-92602b93b9ce" name="Default Changelist" comment="" />
+      <created>1647481700851</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647481700851</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="530" y="191" key="FileChooserDialogImpl" timestamp="1648029533867">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="530" y="191" key="FileChooserDialogImpl/0.0.1280.680/1920.-102.2560.1400@0.0.1280.680" timestamp="1648029533867" />
+    <state x="2980" y="353" key="FileChooserDialogImpl/0.0.1280.680/1920.-102.2560.1400@1920.-102.2560.1400" timestamp="1647591994558" />
+    <state width="1238" height="403" key="GridCell.Tab.0.bottom" timestamp="1648029713478">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1238" height="403" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.-102.2560.1400@0.0.1280.680" timestamp="1648029713478" />
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.-102.2560.1400@1920.-102.2560.1400" timestamp="1647587849013" />
+    <state width="1238" height="403" key="GridCell.Tab.0.center" timestamp="1648029713478">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1238" height="403" key="GridCell.Tab.0.center/0.0.1280.680/1920.-102.2560.1400@0.0.1280.680" timestamp="1648029713478" />
+    <state width="2517" height="400" key="GridCell.Tab.0.center/0.0.1280.680/1920.-102.2560.1400@1920.-102.2560.1400" timestamp="1647587849013" />
+    <state width="1238" height="403" key="GridCell.Tab.0.left" timestamp="1648029713477">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1238" height="403" key="GridCell.Tab.0.left/0.0.1280.680/1920.-102.2560.1400@0.0.1280.680" timestamp="1648029713477" />
+    <state width="2517" height="400" key="GridCell.Tab.0.left/0.0.1280.680/1920.-102.2560.1400@1920.-102.2560.1400" timestamp="1647587849013" />
+    <state width="1238" height="403" key="GridCell.Tab.0.right" timestamp="1648029713478">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1238" height="403" key="GridCell.Tab.0.right/0.0.1280.680/1920.-102.2560.1400@0.0.1280.680" timestamp="1648029713478" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right/0.0.1280.680/1920.-102.2560.1400@1920.-102.2560.1400" timestamp="1647587849013" />
+    <state x="472" y="153" width="672" height="330" key="search.everywhere.popup" timestamp="1648115037323">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="472" y="153" width="672" height="330" key="search.everywhere.popup/0.0.1280.680/1920.-102.2560.1400@0.0.1280.680" timestamp="1648115037323" />
+    <state x="2863" y="213" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/1920.-102.2560.1400@1920.-102.2560.1400" timestamp="1647573951245" />
   </component>
 </project>
